@@ -28,7 +28,7 @@ NC='\033[0m' # No Color
 # Configuration
 WALLET_ADDRESS="${1:-}"
 NODE_NAME="brc-masternode"
-IMAGE_NAME="birr/brc-node:latest"
+IMAGE_NAME="birrfoundation/brc-node:latest"
 DATA_DIR="/var/lib/brdpos"
 P2P_PORT=30303
 RPC_PORT=8545
