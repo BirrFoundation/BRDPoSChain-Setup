@@ -193,18 +193,28 @@ deploy_node() {
         --restart unless-stopped \
         -p $P2P_PORT:$P2P_PORT \
         -p $RPC_PORT:$RPC_PORT \
-        -v $DATA_DIR:/root/.brc \
+        -v $DATA_DIR:/root/.BRC \
         $IMAGE_NAME \
-        --masternode \
-        --wallet $WALLET_ADDRESS \
-        --network mainnet \
-        --rpc \
-        --rpcaddr 0.0.0.0 \
-        --rpcport $RPC_PORT \
+        --datadir /root/.BRC \
+        --networkid 3669 \
         --port $P2P_PORT \
+        --http \
+        --http-addr 0.0.0.0 \
+        --http-port $RPC_PORT \
+        --http-corsdomain "*" \
+        --http-vhosts "*" \
+        --http-api "eth,net,web3,debug,personal,admin,miner,txpool,BRDPoS" \
+        --ws \
+        --ws-addr 0.0.0.0 \
+        --ws-port 8546 \
+        --ws-origins "*" \
         --syncmode full \
-        --gcmode archive
-    
+        --gcmode archive \
+        --maxpeers 100 \
+        --verbosity 3 \
+        --cache 512 \
+        --txpool-globalslots 5120
+
     print_success "Masternode container started"
 }
 
